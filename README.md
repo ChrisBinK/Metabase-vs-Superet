@@ -264,6 +264,12 @@ We are going to create a dashboard base on data available in csv format. Here ar
 ![imagename](/images/superset_dashboard.png)
 
 
+###Apache Superset vs Metabase
+
+As we can see, creating dashboards with Superset and Metabase is not complicated. However, Metabase offers a simple user interface and is suitable for simple use cases, whereas Superset is more for complex use cases of data analysis.
+Superset configuration requires technical expertise while providing also a broad range and rich sets of visualizations that Metabase does not have.
+
+
 
 
 
