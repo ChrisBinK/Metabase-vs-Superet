@@ -28,7 +28,18 @@ Step 1 **Connect to a VPS** using an SSH Client such as **PuTTy**
 
 Step 2 **Install Docker** Refer to this guide [here](https://docs.docker.com/engine/install/) for other Linux Distributions.
 
-<script src="https://gist.github.com/ChrisBinK/30c7b595fcc5eb9d5f5434d33d733d24.js"></script>
+```
+# Update packages list
+sudo dnf update -y
+
+# Install docker and its dependencies
+sudo dnf install install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+#Start docker service
+sudo sudo systemctl start docker    
+sudo systemctl enable docker 
+
+```
 
 Step 3 **Pull Metabase Docker Image**:
 - Pull the metabase Docker image
@@ -74,8 +85,20 @@ Navigate to  `/var/www/html` and create a folder named superset-dashboard ` mkdi
 
 Step 4 **Create a Docker compose file**
 Create a  `docker-compose.yml` file and add the following yml code.
-
-{% gist 90dd69b41640ee035d72f1a21e068c31.js %}
+```
+services:
+  superset:
+      build:
+        context: ./superset
+        dockerfile: dockerfile
+      container_name: superset
+      environment:
+        - ADMIN_USERNAME=admin
+        - ADMIN_EMAIL=myemail@domain.com
+        - ADMIN_PASSWORD=admin
+      ports:
+        - '8088:8088'
+```
 
 Step 5 **Create a Docker file**
 
