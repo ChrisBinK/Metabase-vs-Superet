@@ -214,10 +214,29 @@ We can be able to access Apache Superset on `www.example.com`
 
 ![imagename](/images/uplaod%20csv.png)
 
-- In the main menu, click on![imagename](/images/add%20your%20database.png) to add a database of your choice. it is required even if you are using CSV.
+- In the main menu, click on![imagename](/images/add%20your%20database.png) to add a database of your choice. It is required even if you are using CSV.
 
-- To create a **dashboard** in Metabase, Locate the menu Add new as shoen here;
+- To upload a CSV, click on our collections
+
+![imagename](/images/to_upload_csv.png)
+
+- To create a **dashboard** in Metabase, Locate the menu Add new as shown here:
 
 ![imagename](/images/dashboard_menu_create.png)
 
-- In 
+- In Metabase, a dashboard is made of questions. A **question** is a query, its result, and visualizations such as Pie charts, bar charts, maps, etc. Let us create a question for our board.
+let us create a question by **clicking on ask a new one**.
+
+- Select a table  where our  data will come from.
+
+- Apply some Filter, Summarize which are function such as Average(), Sum(). To create our query.
+
+![imagename](/images/visualise%20metatdata.png)
+
+  - Click on Visualise to  create the chart suitable for our chart. Save and add the question to the dashboard.
+
+![imagename](/images/chart_meta.png)
+
+Create as many questions as it is required for the dashboard. Once we are done, we can publish our dashboard by clicking on the share button.
+
+![imagename](/images/sharing_metabase_dashboard.png)
