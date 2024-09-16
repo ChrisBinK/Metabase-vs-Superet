@@ -1,3 +1,5 @@
+![imagename](/images/apache%20vs%20metabase.jpeg)
+
 # Metabase-vs-Superet
 
 There are many visualization tools on the market used for leveraging data insights. It is crucial to consider tools that can be efficiently utilized by data teams for data analysis or data stories. In this blog, we will focus on 2 of the most prominent tools; which are open-source and free, notably **Metabase** and **Apache Superset**.
@@ -183,7 +185,7 @@ This file has some command required to run for setting up Supperset application.
 Step 6  ***Create a docker image**
 
 We need to create a docker container  with `docker compose build`  will build the services in the docker-compose.yml file.
-Then `docker compose up -d`  to create the container.
+Then `docker compose up -d`  to start the application and all the service.
 
 Step 7 Set up a **proxy reverse** in Apache Web Server
 Open the configuration file in /etc/httpd/conf.d. We have to set up a reverse proxy to redirect our domain `www.example.com` to the Metabase container `http://127.0.0.1:8088`. 
@@ -199,3 +201,8 @@ Open the configuration file in /etc/httpd/conf.d. We have to set up a reverse pr
         SSLCertificateKeyFile /etc/letsencrypt/live/www.example.com-005/privkey.pem
     </VirtualHost>
 ```
+We can be able to access Apache Superset on `www.example.com`
+
+
+## Creating dashboard in Metabase.
+
