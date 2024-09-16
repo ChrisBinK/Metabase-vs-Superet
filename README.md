@@ -204,7 +204,7 @@ Open the configuration file in /etc/httpd/conf.d. We have to set up a reverse pr
 We can be able to access Apache Superset on `www.example.com`
 
 
-## Creating dashboard in Metabase.
+## Creating dashboard using Metabase.
 
 - To create a dashboard, you need to set up an account on the server and login as show here.
 
