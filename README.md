@@ -243,7 +243,7 @@ Let us create a question by **clicking on ask a new one**.
 
 
 
-## Creating dashboard in SUperbase.
+## Creating dashboard in Superset.
 
 We are going to create a dashboard base on data available in csv format. Here are the steps:
 
