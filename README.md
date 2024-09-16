@@ -75,7 +75,7 @@ Navigate to  `/var/www/html` and create a folder named superset-dashboard ` mkdi
 Step 4 **Create a Docker compose file**
 Create a  `docker-compose.yml` file and add the following yml code.
 
-<script src="https://gist.github.com/ChrisBinK/90dd69b41640ee035d72f1a21e068c31.js"></script>
+{% gist 90dd69b41640ee035d72f1a21e068c31.js %}
 
 Step 5 **Create a Docker file**
 
