@@ -1,6 +1,6 @@
 ![imagename](/images/apache%20vs%20metabase.jpeg)
 
-# Metabase-vs-Superet
+# Metabase-vs- Apache Superset
 
 There are many visualization tools on the market used for leveraging data insights. It is crucial to consider tools that can be efficiently utilized by data teams for data analysis or data stories. In this blog, we will focus on 2 of the most prominent tools; which are open-source and free, notably **Metabase** and **Apache Superset**.
 
