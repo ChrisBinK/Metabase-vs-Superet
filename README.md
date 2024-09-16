@@ -102,3 +102,100 @@ services:
 
 Step 5 **Create a Docker file**
 
+Navigate to  `/var/www/html/superset-dashboard` and create a folder named superset ` mkdir superset`.
+- In The folder, create a new **DockerFile**  with the follwing code:
+
+```
+    FROM apache/superset:4.0.0
+    USER root
+    RUN pip install mysqlclient
+
+    ENV ADMIN_USERNAME $ADMIN_USERNAME
+    ENV ADMIN_EMAIL $ADMIN_EMAIL
+    ENV ADMIN_PASSWORD $ADMIN_PASSWORD
+
+    RUN export FLASK_APP=superset
+
+    COPY ./superset-init.sh /superset-init.sh
+    COPY superset_config.py /app/
+    ENV SUPERSET_CONFIG_PATH /app/superset_config.py
+
+    RUN chmod 777 /superset-init.sh
+    USER superset
+
+    ENTRYPOINT [ "/superset-init.sh" ]
+```
+
+- Create another file `superset_config.py` with the following code
+This is a file use to configure your application which will  override any of the parameters define here. It is better than  modify the core module.
+Refer to [this link](https://superset.apache.org/docs/configuration/configuring-superset) for more information. 
+
+```
+    # Superset specific config
+    ROW_LIMIT = 5000
+
+   
+    # Set `SECRET_KEY` environment variable.
+    SECRET_KEY = 'YOUR_OWN_RANDOM_GENERATED_SECRET_KEY'
+
+    # The SQLAlchemy connection string to your database backend. This connection defines the path to the database that stores your
+    # superset metadata (slices, connections, tables, dashboards, ...).
+    #SQLALCHEMY_DATABASE_URI = 'sqlite:////superset.db?check_same_thread=false'
+
+    # Flask-WTF flag for CSRF
+    WTF_CSRF_ENABLED = True
+
+    # Add endpoints that need to be exempt from CSRF protection
+    WTF_CSRF_EXEMPT_LIST = []
+
+    # A CSRF token that expires in 1 year
+    WTF_CSRF_TIME_LIMIT = 60 * 60 * 24 * 365
+
+    # Set this API key to enable Mapbox visualizations
+    MAPBOX_API_KEY = ''
+    FEATURE_FLAGS = {
+        "ENABLE_TEMPLATE_PROCESSING": True,
+    }
+
+    ENABLE_PROXY_FIX = True
+```
+
+
+- Lastly, create a file `superset-init.sh` with the followwing Bash script
+
+This file has some command required to run for setting up Supperset application.
+
+```
+    #!/bin/bash
+
+    # create Admin user, you can read these values from env or anywhere else possible
+    superset fab create-admin --username "$ADMIN_USERNAME" --firstname Superset --lastname Admin --email "$ADMIN_EMAIL" --password "$ADMIN_PASSWORD"
+
+    # Upgrading Superset metastore
+    superset db upgrade
+
+    # setup roles and permissions
+    superset superset init 
+
+    # Starting server
+    /bin/sh -c /usr/bin/run-server.sh
+```
+Step 6  ***Create a docker image**
+
+We need to create a docker container  with `docker compose build`  will build the services in the docker-compose.yml file.
+Then `docker compose up -d`  to create the container.
+
+Step 7 Set up a **proxy reverse** in Apache Web Server
+Open the configuration file in /etc/httpd/conf.d. We have to set up a reverse proxy to redirect our domain `www.example.com` to the Metabase container `http://127.0.0.1:8088`. 
+
+```
+    <VirtualHost *:443>
+        ServerName www.example.com
+        ProxyPreserveHost On
+        ProxyPass / http://127.0.0.1:8088/
+        proxyPassReverse  / http://127.0.0.1:8088/	
+        Include /etc/letsencrypt/options-ssl-apache.conf
+        SSLCertificateFile /etc/letsencrypt/live/www.example.com-005/fullchain.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/www.example.com-005/privkey.pem
+    </VirtualHost>
+```
