@@ -206,3 +206,18 @@ We can be able to access Apache Superset on `www.example.com`
 
 ## Creating dashboard in Metabase.
 
+- To create a dashboard, you need to set up an account on the server and login as show here.
+
+![imagename](/images/Login%20metabase%20.png)
+
+- To enable `.csv` file uplaod, you need to go to the admin setting and find the menu **Uploads**.
+
+![imagename](/images/uplaod%20csv.png)
+
+- In the main menu, click on![imagename](/images/add%20your%20database.png) to add a database of your choice. it is required even if you are using CSV.
+
+- To create a **dashboard** in Metabase, Locate the menu Add new as shoen here;
+
+![imagename](/images/dashboard_menu_create.png)
+
+- In 
