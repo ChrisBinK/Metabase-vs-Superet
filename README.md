@@ -225,18 +225,45 @@ We can be able to access Apache Superset on `www.example.com`
 ![imagename](/images/dashboard_menu_create.png)
 
 - In Metabase, a dashboard is made of questions. A **question** is a query, its result, and visualizations such as Pie charts, bar charts, maps, etc. Let us create a question for our board.
-let us create a question by **clicking on ask a new one**.
+Let us create a question by **clicking on ask a new one**.
 
-- Select a table  where our  data will come from.
+- Select a table where our data will come from.
 
-- Apply some Filter, Summarize which are function such as Average(), Sum(). To create our query.
+- Apply some Filter and Summarize, which are functions such as Average() and Sum () to create our query.
 
 ![imagename](/images/visualise%20metatdata.png)
 
-  - Click on Visualise to  create the chart suitable for our chart. Save and add the question to the dashboard.
+- Click on the **Visualize** button to create the chart suitable for our query. Save and add the question to the dashboard.
 
 ![imagename](/images/chart_meta.png)
 
-Create as many questions as it is required for the dashboard. Once we are done, we can publish our dashboard by clicking on the share button.
+- Create as many questions as required for the dashboard. Once we are done, we can publish our dashboard by clicking on the **share** button.
 
 ![imagename](/images/sharing_metabase_dashboard.png)
+
+
+
+## Creating dashboard in SUperbase.
+
+We are going to create a dashboard base on data available in csv format. Here are the steps:
+
+- To create a dashboard in Apache Superset, you need to login the credentials we created in the **docker compose file** previously.
+
+![imagename](/images/superset_login.png)
+
+- To upload a CSV, click settings menu, select **Database Connections**. Select upload a CSV file or Add a Database
+
+![imagename](/images/superset_adding_db.png)
+
+
+- To create a **dashboard** in Superset, Locate the menu **Charts** and click   **+add**. We can create as many chart needed for the dashboard.
+![imagename](/images/superset_create_chart.png)
+
+- Proceed to click on menu **Dashboard** and add all the cahrt we have created by dragging and dropping them on the grid.
+
+![imagename](/images/superset_dashboard.png)
+
+
+
+
+
